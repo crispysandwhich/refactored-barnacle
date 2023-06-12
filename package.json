@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node  backend/server.js",
     "server": "nodemon backend/server.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "client": "npm run dev --prefix client"
   },
   "type": "module",
   "keywords": [],
@@ -22,7 +23,7 @@
     "mongoose": "^7.2.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22",
-    "concurrently": "^8.2.0"
+    "concurrently": "^8.2.0",
+    "nodemon": "^2.0.22"
   }
 }
