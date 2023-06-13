@@ -8,15 +8,15 @@ const authUser = async (req,res) => {
     
     const user = await User.findOne({ email })
 
-    console.log(user._doc)
 
     if(user && (await user.matchPassword(password))) {
-      generateToken(res, user._id)
+      const d = generateToken(res, user._id)
 
       res.status(201).json({
         _id: user._id,
         username: user.username,
-        email: user.email
+        email: user.email,
+        d
       })
 
     } else {
@@ -44,7 +44,7 @@ const registerUser = async (req,res) => {
       throw new Error(`User ${email} already exists. Choose another one`)
     }
 
-
+    // Registers new user
     const newUser = await User.create({
       username,
       email,
@@ -52,11 +52,14 @@ const registerUser = async (req,res) => {
     })
 
     if(newUser) {
-      generateToken(res, user._id);
+      
+      const d = generateToken(res, newUser._id)
+      
       res.status(201).json({
         _id: newUser._id,
         username: newUser.username,
-        email: newUser.email
+        email: newUser.email,
+        d
       })
     }else{
       res.status(400).json({message: 'couldnt create user'})

@@ -17,7 +17,7 @@ export default function RegisterPage() {
 
     try {
       const options = {"Content-Type": 'application/json'}
-      const data = await request('/api/users/register', "POST", options, {username, email, password} )
+      const data =  await request('/api/users/', "POST", options, {username, email, password} )
 
       console.log(data)
 
@@ -47,8 +47,8 @@ export default function RegisterPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)} />
           <button type="submit">register</button>
+          <p>Already have an account, <Link to="/login">Login</Link> instead</p>
         </form>
-        <p>Already have an account, <Link to="/login">Login</Link> instead</p>
       </div>
     </div>
   )

@@ -4,8 +4,8 @@
   width: 100%; 
   top: 0;
   left: 0;
-  border-bottom: 2px solid orangered;
-  background-color: rgba(10, 57, 57, 0.489);
+  border-bottom: 2px solid #9f9895;
+  background-color: rgba(15, 57, 10, 0.889);
 }
 
 .wrapper{
@@ -28,7 +28,7 @@
 
 .navListItem a{
   font-weight: bold;
-  color: rgb(61, 14, 77);
+  color: rgb(74, 77, 14);
   cursor: pointer;
   transition: all 150ms;
   text-transform: capitalize;

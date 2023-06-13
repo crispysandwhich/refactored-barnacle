@@ -17,7 +17,7 @@
 
 .wrapper {
     height: 42vh;
-    width: 67vw;
+    width: 37vw;
     display: flex;
     flex-direction: column;
     background-color: rgba(44, 45, 46, 0.535);
@@ -61,7 +61,7 @@
     text-transform: uppercase;
     transition: all 600ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
-  
+
 .wrapper button:hover {
     background-color: rgb(183, 191, 176);
     color: #000;
