@@ -10,7 +10,7 @@ export default function Navbar() {
   const [showModal, setShowModal] = useState(false)
   const { userInfo } = useSelector((state) => state.auth)
 
-  console.log(userInfo)
+  // console.log(userInfo)
 
   const navigate = useNavigate()
   // Dispatches the actions

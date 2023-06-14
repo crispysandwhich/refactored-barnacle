@@ -18,11 +18,20 @@ export const blogApiSlice = apiSlice.injectEndpoints({
         method: 'POST',
         body: data
       }),
+    }),
+    // Call api to upload an image
+    uploadImg: builder.mutation({
+      query: (data) => ({
+        url: `${BLOGS_URL}/upload`,
+        method: 'POST',
+        body: data,
+      })
     })
   })
 })
 
 export const { 
   useCreateBlogMutation, 
-  useGetAllBlogsQuery  
+  useGetAllBlogsQuery,
+  useUploadImgMutation  
 } = blogApiSlice;

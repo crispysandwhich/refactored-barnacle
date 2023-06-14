@@ -41,10 +41,12 @@ const getFeaturedBlog = async (req, res) => {
 // route PUT /api/blogs/create
 // @access Private
 const createBlog = async (req, res) => {
-  console.log(req.user._id)
+
+  console.log(req.body, 'server')
+
   try {
-    const blog = await Blog.create({...req.body, userId: req.user._id})
-    return res.status(201).json(blog)
+    // const blog = await Blog.create({...req.body, userId: req.user._id})
+    return res.status(201).json(req.body)
   } catch (error) {
     return res.status(500).json(error)
   }
@@ -55,7 +57,6 @@ const createBlog = async (req, res) => {
 // @access Private
 const updateBlog = async (req, res) => {
   try {
-    
     const blog = await Blog.findById(req.params.id)
 
     if(blog.userId.toString() !== req.user._id.toString()) {
@@ -117,6 +118,12 @@ const deleteBlog = async (req, res) => {
   }
 }
 
+const uploadImage = async (req, res) => {
+    console.log(req.file, 'server')
+    
+    return res.status(200).json({message: 'Upload successful'})
+  }
+
 export {
   getBlogs,
   getSingleBlog,
@@ -124,5 +131,6 @@ export {
   createBlog,
   updateBlog,
   likeBlog,
-  deleteBlog
+  deleteBlog,
+  uploadImage
 }

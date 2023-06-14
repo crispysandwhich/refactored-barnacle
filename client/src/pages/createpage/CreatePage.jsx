@@ -1,17 +1,23 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { useCreateBlogMutation, useUploadImgMutation } from '../../redux/blogApiSlice.js'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import classes from './createpage.module.css'
 import { Form } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
+
+
+
 export default function CreatePage() {
 
   const [title, setTitle] = useState('')
   const [summary, setSummary] = useState('')
   const [content, setContent] = useState('')
+  const [img, setImg] = useState('')
+  const [category, setCategory] = useState('')
 
   const modules = {
     toolbar: [
@@ -30,29 +36,64 @@ export default function CreatePage() {
     'link', 'image'
   ]
 
+  const categories = [
+    'crypto',
+    'coding',
+    'programming',
+    'fun'
+  ]
+
   const navigate = useNavigate()
 
   const { userInfo } = useSelector((state) => state.auth)
+  const token = userInfo.token
 
-
+  const [createBlog] = useCreateBlogMutation()
+  const [uploadImg] = useUploadImgMutation()
 
 
   const handleCreateBlog = async (e) => {
     e.preventDefault()
-    // try {
-      
+
+    try {
+      const data = new FormData()
+      let filename = null
+
+      if(img){
+        filename = crypto.randomUUID() + img.name
+        data.append('filename', filename)
+        data.append('image', img)
+        await uploadImg(data)
+      } else {
+        return toast.error('There is no image hoe')
+      }
+
+      const data2 = {
+        title,
+        summary,
+        content,
+        category,
+        photo: filename
+      }
+  
+      const res = await createBlog(data2).unwrap()
+      console.log(res)
 
 
-    // } catch (error) {
-    //   toast.error(error?.data?.message || error.error)
-    // }
+
+    } catch (error) {
+      toast.error(error?.data?.message || error.error)
+    }
+
   }
+
+
 
   return (
     <div className={classes.container}>
       <div className="classes wrapper">
         <h2 className={classes.title}>Craete Blog</h2>
-        <Form onSubmit={handleCreateBlog}>
+        <form onSubmit={handleCreateBlog} encType='multipart/form-data'>
           <input 
             type="text" 
             placeholder="title" 
@@ -65,15 +106,26 @@ export default function CreatePage() {
             value={summary}
             onChange={e => setSummary(e.target.value)}
             />
-          <input type="file"  />
+          <input 
+            type="file" 
+            onChange={(e) => setImg(e.target.files[0])}  />
           <ReactQuill 
             modules={modules} 
             formats={formats}
             value={content}
             onChange={(value) => setContent(value)}
             />
+
+            <select value={category} onChange={e => setCategory(e.target.value)}>
+              {
+                categories.map((category) => (
+                  <option key={crypto.randomUUID()}>{category}</option>
+                ))
+              }
+            </select>
+
           <button>Create Blog</button>
-        </Form>
+        </form>
       </div>
     </div>
   )

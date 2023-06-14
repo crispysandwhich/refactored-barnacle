@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv'
 import cors from 'cors'
 import cookieParser from 'cookie-parser';
+
 import connectDB from './config/db.js';
 import userRoutes from './routes/userRoutes.js'
 import blogRoutes from './routes/blogRoutes.js'
@@ -22,6 +23,9 @@ app.use(cookieParser())
 // Routes
 app.use('/api/users/',userRoutes);
 app.use('/api/blogs/', blogRoutes)
+
+
+
 
 // Errr midle ware
 app.use(notFound)

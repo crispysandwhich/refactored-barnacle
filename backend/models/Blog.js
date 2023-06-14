@@ -11,7 +11,12 @@ const BlogSchema = new mongoose.Schema({
     rqeuired: true,
     min: 4
   },
-  description: {
+  summary: {
+    type: String,
+    required: true,
+    min: 12,
+  },
+  content: {
     type: String,
     required: true,
     min: 12,

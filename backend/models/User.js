@@ -30,19 +30,12 @@ UserSchema.pre('save', async function(next) {
   }
 
   
-  // // Sets default user img for now
-  // if user image isnt changed keep default
-  if(!this.isModified('profileImg')){
+  // Check to see if field is empty fills it with current default img
+  if(this.$isEmpty('profileImg')){
     const defaultProfileImg = 'https://nft-market-assets.yokaiswap.com/0x73c0e2A4B765ed81f63759d1Fcf2C4DCD2925f4A/tanuki-master.png'
     this.profileImg = defaultProfileImg
     next()
   }
-
-  // If it is changed keep it
-  if(this.isModified('profileImg')) {
-    next()
-  }
-
 
 
   // Genereates a crypt hash for password and sets it before its saved to DB

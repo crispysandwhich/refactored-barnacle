@@ -18,7 +18,8 @@ const authUser = async (req,res) => {
         _id: user._id,
         username: user.username,
         email: user.email,
-        d
+        profileImg: user.profileImg,
+        token: d
       })
 
     } else {
@@ -37,8 +38,6 @@ const authUser = async (req,res) => {
 const registerUser = async (req,res) => {
 
   const {username, email, password, profileImg} = req.body
-
-
 
   try {
     const user = await User.findOne({email}) 
@@ -88,7 +87,7 @@ const logoutUser = async (req,res) => {
   res.cookie('jwt', '', { 
     httpOnly: true,
     expires: new Date(0),
-})
+  })
   res.status(200).json({message: 'user logged out'})
 }
 
