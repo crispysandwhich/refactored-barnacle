@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './homepage.module.css'
 import { Link } from 'react-router-dom'
-
+import FeaturedBlogs from '../../components/featuredBlogs/FeaturedBlogs.jsx'
 import raffi from '../../assets/LoneyTom.png'
 
 export default function HomePage() {
@@ -20,8 +20,10 @@ export default function HomePage() {
           <img src={raffi} alt="just a small little bot"/>
         </div>
 
-
+        
       </div>
+
+      <FeaturedBlogs />
 
     </div>
   )

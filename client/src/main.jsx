@@ -8,12 +8,22 @@ import { Provider } from 'react-redux'
 import App from './App'
 import Login from './pages/loginpage/LoginPage.jsx'
 import Register from './pages/registerpage/RegisterPage.jsx'
-
+import HomePage from './pages/homepage/HomePage.jsx'
+import CreatePage from './pages/createpage/CreatePage.jsx'
+import ErrorPage from './pages/errorpage/error-page.jsx'
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+      {index: true, element: <HomePage />},
+      {
+        path: "/create",
+        element: <CreatePage />,
+      }
+    ]
   },
   {
     path: '/login',

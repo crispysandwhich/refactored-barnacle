@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import {useSelector } from 'react-redux'
 import classes from './navbar.module.css'
 import { Link } from 'react-router-dom'
 
@@ -7,8 +8,10 @@ import profileImg from '../../assets/tunukiNFT.png'
 export default function Navbar() {
 
   const [showModal, setShowModal] = useState(false)
+  const { userInfo } = useSelector((state) => state.auth)
 
-  console.log(showModal)
+  console.log(userInfo.username)
+
 
   return (
     <div className={classes.container}>
@@ -33,6 +36,7 @@ export default function Navbar() {
         </ul>
 
         <div className={classes.profile_tab} >
+          {/* {} */}
           <img onClick={() => setShowModal(!showModal)} src={profileImg} alt="user profile" />
           {
             showModal && (

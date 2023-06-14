@@ -1,8 +1,9 @@
-
+import { Outlet } from 'react-router-dom'
 import HomePage from './pages/homepage/HomePage.jsx'
 import './App.css'
 import Navbar from './components/navbar/Navbar.jsx'
-import FeaturedBlogs from './components/featuredBlogs/FeaturedBlogs.jsx'
+
+import Footer  from './components/footer/Footer.jsx'
 
 function App() {
 
@@ -11,9 +12,11 @@ function App() {
     <>
       <Navbar />
       
-      <HomePage />
+      <div>
+        <Outlet />
+      </div>
 
-      <FeaturedBlogs />
+      <Footer />
       
     </>
   )

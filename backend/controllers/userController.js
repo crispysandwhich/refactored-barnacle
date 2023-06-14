@@ -74,7 +74,11 @@ const registerUser = async (req,res) => {
 
 
 const logoutUser = async (req,res) => {
-  res.status(200).json({message: 'auth user'})
+  res.cookie('jwt', '', { 
+    httpOnly: true,
+    experies: new Date(0),
+})
+  res.status(200).json({message: 'user logged out'})
 }
 
 export {

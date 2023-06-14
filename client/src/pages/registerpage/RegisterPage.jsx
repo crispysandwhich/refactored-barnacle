@@ -1,14 +1,28 @@
-import React, { useState } from 'react'
-import classes from './registerpage.module.css'
+import  { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { request } from '../../utils/api'
+import { useDispatch, useSelector } from 'react-redux'
+import { setCredentials } from '../../redux/authSlice.js'
+import { useRegisterMutation } from '../../redux/userApiSlice.js'
+import classes from './registerpage.module.css'
 
 export default function RegisterPage() {
 
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const navigate  = useNavigate()
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const [register, {isLoading}] = useRegisterMutation()
+
+  const { userInfo } = useSelector((state) => state.auth)
+
+  useEffect(() => {
+    if(userInfo){
+      navigate('/')
+    }
+  },[userInfo, navigate])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -16,11 +30,9 @@ export default function RegisterPage() {
     if(username === "" || email === "" || password === "") return
 
     try {
-      const options = {"Content-Type": 'application/json'}
-      const data =  await request('/api/users/', "POST", options, {username, email, password} )
-
-      console.log(data)
-
+      const res = await register({username, email, password}).unwrap()
+      dispatch(setCredentials({...res}))
+      navigate('/')
     } catch (error) {
       console.log(error)
     }
