@@ -1,7 +1,7 @@
 import User from "../models/User.js"
 import generateToken from "../utils/generateToken.js"
 
- 
+
 // @desc Auth user/set token
 // route POST /api/users/auth
 // @access Public

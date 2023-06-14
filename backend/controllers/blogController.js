@@ -1,6 +1,8 @@
 import Blog from '../models/Blog.js'
 
-
+// @desc Gets all blogs
+// route GET /api/blogs
+// @access Public
 const getBlogs = async (req, res) => {
   try {
     const blogs = await Blog.find({}).populate("userId", "-password")
@@ -10,6 +12,9 @@ const getBlogs = async (req, res) => {
   }
 }
 
+// @desc Gets a Single Blog
+// route GET /api/blogs/:id
+// @access Public
 const getSingleBlog = async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id).populate("userId", "-password")
@@ -20,7 +25,9 @@ const getSingleBlog = async (req, res) => {
     return res.status(500).json(error)
   }
 }
-
+// @desc Gets featured blogs
+// route GET /api/blogs/featured
+// @access Public
 const getFeaturedBlog = async (req, res) => {
   try {
     const blogs = await Blog.find({featured: true}).populate("userId", "-password").limit(3)
@@ -30,6 +37,9 @@ const getFeaturedBlog = async (req, res) => {
   }
 }
 
+// @desc Creates a blog
+// route PUT /api/blogs/create
+// @access Private
 const createBlog = async (req, res) => {
   console.log(req.user._id)
   try {
@@ -40,6 +50,9 @@ const createBlog = async (req, res) => {
   }
 }
 
+// @desc Updates a blog
+// route PUT /api/blogs/:id
+// @access Private
 const updateBlog = async (req, res) => {
   try {
     
@@ -58,6 +71,9 @@ const updateBlog = async (req, res) => {
   }
 }
 
+// @desc Likes a blog
+// route PUT /api/blogs/likeBlog/:id
+// @access Private
 const likeBlog = async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id)
@@ -82,6 +98,9 @@ const likeBlog = async (req, res) => {
   }
 }
 
+// @desc Deletes a blog
+// route PUT /api/deleteBlog/:id
+// @access Private
 const deleteBlog = async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id)
