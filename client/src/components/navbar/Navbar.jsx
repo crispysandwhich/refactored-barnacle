@@ -1,16 +1,32 @@
 import { useState } from 'react'
-import {useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { removeCredentials } from '../../redux/authSlice.js'
+import { useLogoutMutation } from '../../redux/userApiSlice.js'
 import classes from './navbar.module.css'
-import { Link } from 'react-router-dom'
-
-import profileImg from '../../assets/tunukiNFT.png'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function Navbar() {
 
   const [showModal, setShowModal] = useState(false)
   const { userInfo } = useSelector((state) => state.auth)
 
-  
+  const navigate = useNavigate()
+  // Dispatches the actions
+  const dispatch = useDispatch()
+
+  const [logout] = useLogoutMutation()
+
+  const handleLogout = async () => {
+    try {
+      // Calls the server to logout
+      await logout().unwrap()
+      // calls the removecreditntials slice to destory local storage
+      dispatch(removeCredentials())
+      navigate('/')
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
 
   return (
@@ -43,13 +59,14 @@ export default function Navbar() {
             </div>
           ) : (
             <div className={classes.profile_tab} >
-              {/* {} */}
-              <img onClick={() => setShowModal(!showModal)} src={profileImg} alt="user profile" />
+              <span>{userInfo.username}</span>
+              <img onClick={() => setShowModal(!showModal)} src={userInfo.profileImg} alt="user profile" />
               {
                 showModal && (
                   <div className={classes.modal}>
                     <Link to="/create">Create</Link>
-                    <span>LOgout</span>
+                    <Link to="/profile">Create</Link>
+                    <Link onClick={handleLogout}>LOgout</Link>
                   </div>
                 )
               }

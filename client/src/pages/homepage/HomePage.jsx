@@ -23,7 +23,10 @@ export default function HomePage() {
         
       </div>
 
-      <FeaturedBlogs />
+      <div className={classes.wrapper}>
+        <FeaturedBlogs />
+      </div>
+
 
     </div>
   )
