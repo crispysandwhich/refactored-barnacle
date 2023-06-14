@@ -67,7 +67,7 @@ export default function Navbar() {
                 showModal && (
                   <div className={classes.modal}>
                     <Link to="/create">Create</Link>
-                    <Link to="/profile">Create</Link>
+                    <Link to="/profile">profile</Link>
                     <Link onClick={handleLogout}>LOgout</Link>
                   </div>
                 )

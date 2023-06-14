@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { setCredentials } from '../../redux/authSlice.js'
 import { useRegisterMutation } from '../../redux/userApiSlice.js'
-import {toast} from 'react-toastify'
+import { toast } from 'react-toastify'
 import classes from './registerpage.module.css'
 
 export default function RegisterPage() {

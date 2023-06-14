@@ -13,6 +13,9 @@ import CreatePage from './pages/createpage/CreatePage.jsx'
 import ErrorPage from './pages/errorpage/error-page.jsx'
 import Profile from './pages/profilepage/ProfilePage.jsx'
 
+// PrivateRoute
+import PrivateRoute from './components/PrivateRoute.jsx'
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -34,7 +37,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/profile',
-        element: <Profile />
+        element: <PrivateRoute><Profile /></PrivateRoute>
       }
     ]
   },
