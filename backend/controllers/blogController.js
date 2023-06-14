@@ -61,17 +61,17 @@ const updateBlog = async (req, res) => {
 const likeBlog = async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id)
+    
+    // console.log(req.user)
 
-    console.log()
-
-    if(blog.likes.includes(req.user.userId)) {
-      blog.likes = blog.likes.filter((userId) => userId !== req.user.userId)
+    if(blog.likes.includes(req.user._id)) {
+      blog.likes = blog.likes.filter((userId) => userId !== req.user._id.toString())
 
       await blog.save()
 
       return res.status(200).json({message: 'disliked the blog'})
     } else {
-      blog.likes.push(req.user.userId)
+      blog.likes.push(req.user._id)
       await blog.save()
 
       return res.status(200).json({message: 'liked the blog'})
@@ -85,7 +85,7 @@ const likeBlog = async (req, res) => {
 const deleteBlog = async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id)
-    if(blog.userId.toString() !== req.user.userId.toString()) {
+    if(blog.userId.toString() !== req.user._id.toString()) {
       throw new Error("This not your post")
     }
 
