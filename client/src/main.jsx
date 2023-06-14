@@ -11,6 +11,7 @@ import Register from './pages/registerpage/RegisterPage.jsx'
 import HomePage from './pages/homepage/HomePage.jsx'
 import CreatePage from './pages/createpage/CreatePage.jsx'
 import ErrorPage from './pages/errorpage/error-page.jsx'
+import Profile from './pages/profilepage/ProfilePage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
         path: '/register',
         element: <Register />
       },
+      {
+        path: '/profile',
+        element: <Profile />
+      }
     ]
   },
   
