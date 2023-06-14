@@ -10,12 +10,10 @@ import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 dotenv.config()
 // DB Connection
 connectDB()
-
 const PORT = process.env.PORT || 5000
+
+
 const app = express()
-
-
-// Middleware
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
@@ -25,11 +23,9 @@ app.use(cookieParser())
 app.use('/api/users/',userRoutes);
 app.use('/api/blogs/', blogRoutes)
 
-// Error handler middleware
+
 app.use(notFound)
 app.use(errorHandler)
-
-
 
 app.get('/', (req, res) => res.send('Welcome to ghostieve server I guiess'))
 

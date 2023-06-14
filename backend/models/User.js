@@ -29,14 +29,21 @@ UserSchema.pre('save', async function(next) {
     next()
   }
 
-  // if user image isnt changed then move on
+  
+  // // Sets default user img for now
+  // if user image isnt changed keep default
   if(!this.isModified('profileImg')){
+    const defaultProfileImg = 'https://nft-market-assets.yokaiswap.com/0x73c0e2A4B765ed81f63759d1Fcf2C4DCD2925f4A/tanuki-master.png'
+    this.profileImg = defaultProfileImg
     next()
   }
 
-  // Sets default user img for now
-  const defaultProfileImg = 'https://nft-market-assets.yokaiswap.com/0x73c0e2A4B765ed81f63759d1Fcf2C4DCD2925f4A/tanuki-master.png'
-  this.profileImg = defaultProfileImg
+  // If it is changed keep it
+  if(this.isModified('profileImg')) {
+    next()
+  }
+
+
 
   // Genereates a crypt hash for password and sets it before its saved to DB
   const salt = await bcrypt.genSalt(10)
