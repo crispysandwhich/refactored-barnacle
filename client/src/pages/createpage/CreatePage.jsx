@@ -46,10 +46,16 @@ export default function CreatePage() {
   const navigate = useNavigate()
 
   const { userInfo } = useSelector((state) => state.auth)
-  const token = userInfo.token
+  // const token = userInfo.token
 
   const [createBlog] = useCreateBlogMutation()
   const [uploadImg] = useUploadImgMutation()
+
+  useEffect(() => {
+    if(!userInfo || userInfo === null){
+      navigate('/')
+    }
+  },[userInfo])
 
 
   const handleCreateBlog = async (e) => {

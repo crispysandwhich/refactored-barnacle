@@ -1,5 +1,4 @@
 import express from 'express';
-import multer from 'multer';
 import { getBlogs, 
         getSingleBlog, 
         getFeaturedBlog, 
@@ -10,19 +9,8 @@ import { getBlogs,
         uploadImage
   } from '../controllers/blogController.js';
 import { protect } from '../middleware/authMiddleware.js';
+import  upload  from '../middleware/upload.js'
 const router = express.Router()
-
-// Multer Setup
-const storage = multer.diskStorage({
-  destination: function (req,file, cb){
-    cb(null, '../public/images')
-  },
-  filename: function(req,file, cb){
-    cb(null, req.body.filename)
-  }
-})
-
-const upload = multer({storage: storage})
 
 // *** /api/blogs/
 
