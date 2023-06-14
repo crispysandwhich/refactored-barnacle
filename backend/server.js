@@ -23,7 +23,7 @@ app.use(cookieParser())
 app.use('/api/users/',userRoutes);
 app.use('/api/blogs/', blogRoutes)
 
-
+// Errr midle ware
 app.use(notFound)
 app.use(errorHandler)
 
