@@ -1,8 +1,11 @@
-import {useState} from 'react'
+import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import classes from './createpage.module.css'
 import { Form } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 export default function CreatePage() {
 
@@ -27,12 +30,29 @@ export default function CreatePage() {
     'link', 'image'
   ]
 
+  const navigate = useNavigate()
+
+  const { userInfo } = useSelector((state) => state.auth)
+
+
+
+
+  const handleCreateBlog = async (e) => {
+    e.preventDefault()
+    // try {
+      
+
+
+    // } catch (error) {
+    //   toast.error(error?.data?.message || error.error)
+    // }
+  }
 
   return (
     <div className={classes.container}>
       <div className="classes wrapper">
         <h2 className={classes.title}>Craete Blog</h2>
-        <Form>
+        <Form onSubmit={handleCreateBlog}>
           <input 
             type="text" 
             placeholder="title" 

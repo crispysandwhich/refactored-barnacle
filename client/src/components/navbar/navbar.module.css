@@ -4,8 +4,8 @@
   width: 100%; 
   top: 0;
   left: 0;
-  border-bottom: 2px solid #9f9895;
-  background-color: rgba(15, 57, 10, 0.889);
+  border-bottom: 2px solid #865017;
+  background-color: rgba(37, 39, 37, 0.889);
 }
 
 .wrapper{
@@ -18,6 +18,13 @@
   align-items: center;
 }
 
+.logo{
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: orangered;
+  text-decoration: none;
+}
+
 .navList {
   display: flex;
   align-items: center;
@@ -28,14 +35,34 @@
 
 .navListItem a{
   font-weight: bold;
-  color: rgb(74, 77, 14);
+  color: rgb(225, 233, 71);
   cursor: pointer;
   transition: all 150ms;
   text-transform: capitalize;
 }
 
 .navListItem:hover a{
-  color: rgb(223, 218, 65)
+  color: rgb(58, 130, 121)
+}
+
+.controlPan {
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.controlPan a {
+  text-decoration: none;
+  background-color: black;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  transition: all 150ms ease-in-out;
+}
+.controlPan a:hover{
+  color: yellow;
 }
 
 .profile_tab {

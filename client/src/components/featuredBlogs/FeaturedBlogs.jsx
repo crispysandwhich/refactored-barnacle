@@ -1,4 +1,4 @@
-import React from 'react'
+
 import classes from './featuredBlogs.module.css'
 
 import image1 from '../../assets/dawid-zawila--G3rw6Y02D0-unsplash.jpg'
@@ -7,10 +7,10 @@ import {AiFillLike} from 'react-icons/ai'
 
 export default function FeaturedBlogs() {
   return (
-    <div className={classes.conainer}>
+    <div className={classes.container}>
       
       <div className={classes.wrapper}>
-        <h3>Geature Blogs</h3>
+        <h3>Feature Blogs</h3>
 
         <div className={classes.blogs}>
 
@@ -71,7 +71,6 @@ export default function FeaturedBlogs() {
                 </div>
               </div>
             </div>
-
 
 
           </div>

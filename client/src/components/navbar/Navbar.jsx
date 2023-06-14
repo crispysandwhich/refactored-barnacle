@@ -36,7 +36,7 @@ export default function Navbar() {
 
       <div className={classes.wrapper}>
         
-        <Link to='/'>deBlog</Link>
+        <Link to='/' className={classes.logo}>deBlog</Link>
 
         <ul className={classes.navList}>
           <li className={classes.navListItem}>
@@ -55,7 +55,7 @@ export default function Navbar() {
 
         {
           !userInfo ? (
-            <div>
+            <div className={classes.controlPan}>
               <Link to="/login">login</Link>
               <Link to="/register">register</Link>
             </div>
