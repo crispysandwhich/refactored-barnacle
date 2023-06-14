@@ -10,7 +10,7 @@ export default function Navbar() {
   const [showModal, setShowModal] = useState(false)
   const { userInfo } = useSelector((state) => state.auth)
 
-  console.log(userInfo.username)
+  
 
 
   return (
@@ -35,18 +35,28 @@ export default function Navbar() {
           </li>
         </ul>
 
-        <div className={classes.profile_tab} >
-          {/* {} */}
-          <img onClick={() => setShowModal(!showModal)} src={profileImg} alt="user profile" />
-          {
-            showModal && (
-              <div className={classes.modal}>
-                <Link to="/create">Create</Link>
-                <span>LOgout</span>
-              </div>
-            )
-          }
-        </div>
+        {
+          !userInfo ? (
+            <div>
+              <Link to="/login">login</Link>
+              <Link to="/register">register</Link>
+            </div>
+          ) : (
+            <div className={classes.profile_tab} >
+              {/* {} */}
+              <img onClick={() => setShowModal(!showModal)} src={profileImg} alt="user profile" />
+              {
+                showModal && (
+                  <div className={classes.modal}>
+                    <Link to="/create">Create</Link>
+                    <span>LOgout</span>
+                  </div>
+                )
+              }
+            </div>
+          )
+        }
+
 
       </div>
 

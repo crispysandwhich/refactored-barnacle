@@ -1,3 +1,5 @@
+// Connection to mango DB
+
 import mongoose from 'mongoose';
 
 const connectDB = async() => {

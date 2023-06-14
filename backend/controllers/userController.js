@@ -1,13 +1,15 @@
-import generateToken from "../utils/generateToken.js"
 import User from "../models/User.js"
+import generateToken from "../utils/generateToken.js"
 
+
+// @desc Auth user/set token
+// route POST /api/users/auth
+// @access Public
 const authUser = async (req,res) => {
   const {email, password} = req.body
 
   try {
-    
     const user = await User.findOne({ email })
-
 
     if(user && (await user.matchPassword(password))) {
       const d = generateToken(res, user._id)
@@ -24,19 +26,21 @@ const authUser = async (req,res) => {
       throw new Error("ivalid user")
     }
 
-
   } catch (error) {
     res.status(500).json({message: error.message})
   }
 }
 
-
+// @desc Register Create a new user
+// route POST /api/users
+// @access Public
 const registerUser = async (req,res) => {
 
-  const {username, email, password} = req.body
+  const {username, email, password, profileImg} = req.body
+
+
 
   try {
-    
     const user = await User.findOne({email}) 
 
     if(user) {
@@ -48,8 +52,10 @@ const registerUser = async (req,res) => {
     const newUser = await User.create({
       username,
       email,
-      password
+      password,
+      profileImg,
     })
+
 
     if(newUser) {
       
@@ -59,7 +65,8 @@ const registerUser = async (req,res) => {
         _id: newUser._id,
         username: newUser.username,
         email: newUser.email,
-        d
+        profileImg: newUser.profileImg,
+        token: d
       })
     }else{
       res.status(400).json({message: 'couldnt create user'})
@@ -72,7 +79,9 @@ const registerUser = async (req,res) => {
 
 }
 
-
+// @desc Logout LogoutUser
+// route POST /api/users/logout
+// @access Public
 const logoutUser = async (req,res) => {
   res.cookie('jwt', '', { 
     httpOnly: true,
