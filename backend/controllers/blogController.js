@@ -46,7 +46,7 @@ const createBlog = async (req, res) => {
 
   try {
     const blog = await Blog.create({...req.body, userId: req.user._id})
-    return res.status(201).json(req.body)
+    return res.status(201).json(blog)
   } catch (error) {
     return res.status(500).json(error)
   }

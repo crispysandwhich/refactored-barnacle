@@ -15,6 +15,7 @@ import Profile from './pages/profilepage/ProfilePage.jsx'
 
 // PrivateRoute
 import PrivateRoute from './components/PrivateRoute.jsx'
+import BlogPage from './pages/blogpage/BlogPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: '/profile',
         element: <PrivateRoute><Profile /></PrivateRoute>
+      },
+      {
+        path: '/blogDetails/:id',
+        element: <BlogPage />
       }
     ]
   },

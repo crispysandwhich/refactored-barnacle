@@ -1,4 +1,4 @@
-import React from 'react'
+// Need to implement a way to sve or get newsletter
 import classes from './newsletter.module.css'
 import { FiSend } from 'react-icons/fi'
 
