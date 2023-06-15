@@ -1,4 +1,4 @@
-
+// Setup request to handle featured blogs
 import classes from './featuredBlogs.module.css'
 
 import image1 from '../../assets/dawid-zawila--G3rw6Y02D0-unsplash.jpg'

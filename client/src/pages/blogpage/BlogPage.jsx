@@ -8,7 +8,6 @@ import { AiFillEdit, AiFillLike } from 'react-icons/ai'
 import classes from './blogpage.module.css'
 
 export default function BlogPage() {
-
   const [blogDetails, setBlogDetails] = useState("")
   const { id } = useParams()
 
@@ -20,9 +19,9 @@ export default function BlogPage() {
     if (isSuccess) {
       setBlogDetails(blog)
     }
-  },[isFetching])
+  },[isFetching, blog, isSuccess
+  ])
 
-  // console.log(blogDetails)
 
   return (
     <div className={classes.container}>
@@ -67,8 +66,8 @@ export default function BlogPage() {
           </div>
 
           <div className={classes.authorAndDate}>
-          <span><span>Author</span> {blogDetails?.userId?.username}</span>
-          <span><span>Created</span> {format(blogDetails.createdAt)}</span>
+            <span><span>Author</span> {blogDetails?.userId?.username}</span>
+            <span><span>Created</span> {format(blogDetails.createdAt)}</span>
           </div>
 
         </div>

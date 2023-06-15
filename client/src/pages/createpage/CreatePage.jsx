@@ -55,7 +55,7 @@ export default function CreatePage() {
     if(!userInfo || userInfo === null){
       navigate('/')
     }
-  },[userInfo])
+  },[userInfo, navigate])
 
 
   const handleCreateBlog = async (e) => {

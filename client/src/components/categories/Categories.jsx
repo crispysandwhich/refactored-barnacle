@@ -33,7 +33,7 @@ export default function Categories() {
       setBlogz(blogss)
       setFilteredBlogs(blogss)
     }
-  },[isFetching])
+  },[isFetching, isSuccess, blogss])
   
   useEffect(() => {
 
@@ -46,7 +46,7 @@ export default function Categories() {
       })
     }
 
-  },[activeCategory])
+  },[activeCategory, blogz])
 
 
   return (
