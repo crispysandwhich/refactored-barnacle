@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { useCreateBlogMutation, useUploadImgMutation } from '../../redux/blogApiSlice.js'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import classes from './createpage.module.css'
-import { Form } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 
@@ -40,13 +39,14 @@ export default function CreatePage() {
     'crypto',
     'coding',
     'programming',
-    'fun'
+    'fun',
+    'hacking',
+    'modding'
   ]
 
   const navigate = useNavigate()
 
   const { userInfo } = useSelector((state) => state.auth)
-  // const token = userInfo.token
 
   const [createBlog] = useCreateBlogMutation()
   const [uploadImg] = useUploadImgMutation()
@@ -83,9 +83,8 @@ export default function CreatePage() {
       }
   
       const res = await createBlog(data2).unwrap()
-      console.log(res)
-
-
+      
+      navigate(`/blogDetails/${res._id}`)
 
     } catch (error) {
       toast.error(error?.data?.message || error.error)
@@ -125,7 +124,7 @@ export default function CreatePage() {
             <select value={category} onChange={e => setCategory(e.target.value)}>
               {
                 categories.map((category) => (
-                  <option key={crypto.randomUUID()}>{category}</option>
+                  <option key={crypto.randomUUID()} selected>{category}</option>
                 ))
               }
             </select>

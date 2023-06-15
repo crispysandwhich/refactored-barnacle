@@ -1,0 +1,71 @@
+.container{
+  height: 100%;
+  width: 100%;
+  padding: 2.5rem 0;
+  background-color: orangered;
+}
+
+.wrapper{
+  max-width: 1180px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titles{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.titles > h5{
+  color: #555;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: black;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.titles > h2{
+  color: #222;
+  font-size: 28px;
+}
+
+.wrapper > .inputContainer{
+  margin-top: 1.5rem;
+  border: 2px solid #333;
+  background-color: #fff;
+  border-radius: 20px;
+  height: 50px;
+  width: 360px;
+  /* display: flex; */
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wrapper > .inputContainer:focus-within{
+  border-color: #777;
+}
+
+.wrapper > .inputContainer > input{
+  padding: 0.25rem 0.5rem;
+  border: none;
+  outline: none;
+  width: 90%;
+  height: 100%;
+  border-radius: 20px;
+  background-color: transparent;
+}
+
+svg.sendIcon{
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 14px;
+  color:#222;
+}

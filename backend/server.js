@@ -24,8 +24,8 @@ app.use(cookieParser())
 app.use('/api/users/',userRoutes);
 app.use('/api/blogs/', blogRoutes)
 
-
-
+// Allows you to call this route and it will server images from backend to frontend
+app.use('/images', express.static('./backend/public/images'))
 
 // Errr midle ware
 app.use(notFound)

@@ -6,6 +6,7 @@
   left: 0;
   border-bottom: 2px solid #865017;
   background-color: rgba(37, 39, 37, 0.889);
+  z-index: 222;
 }
 
 .wrapper{

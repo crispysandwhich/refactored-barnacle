@@ -3,6 +3,14 @@ import classes from './footer.module.css'
 
 export default function Footer() {
   return (
-    <div>Footer</div>
+    <footer className={classes.container}>
+      <div className={classes.wrapper}>
+
+
+        <p>Made with 💘 - 2023 - lyub12</p>
+
+
+      </div>
+    </footer>
   )
 }

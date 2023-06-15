@@ -1,14 +1,17 @@
 import { apiSlice } from './apiSlice.js'
-const BLOGS_URL = 'api/blogs'
+const BLOGS_URL = '/api/blogs'
 
 export const blogApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     // calls the getallblogs endpoint from server
-    getAllBlogs: builder.query({
-      query: (data) => ({
-        url: BLOGS_URL,
-        method: 'GET',
-        body: data
+    getAll: builder.query({
+      query: () => ({
+        url: BLOGS_URL
+      })
+    }),
+    getSingle: builder.query({
+      query: (blogId) => ({
+        url: `${BLOGS_URL}/blogId`
       })
     }),
     // Calls the createBlog endpoint from server
@@ -31,7 +34,7 @@ export const blogApiSlice = apiSlice.injectEndpoints({
 })
 
 export const { 
+  useGetAllQuery,
   useCreateBlogMutation, 
-  useGetAllBlogsQuery,
   useUploadImgMutation  
 } = blogApiSlice;

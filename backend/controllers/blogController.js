@@ -42,10 +42,10 @@ const getFeaturedBlog = async (req, res) => {
 // @access Private
 const createBlog = async (req, res) => {
 
-  console.log(req.body, 'server')
+  // console.log(req.body, 'server')
 
   try {
-    // const blog = await Blog.create({...req.body, userId: req.user._id})
+    const blog = await Blog.create({...req.body, userId: req.user._id})
     return res.status(201).json(req.body)
   } catch (error) {
     return res.status(500).json(error)
