@@ -122,7 +122,7 @@ const uploadImage = async (req, res) => {
     console.log(req.file, 'server')
     
     return res.status(200).json({message: 'Upload successful'})
-  }
+}
 
 export {
   getBlogs,

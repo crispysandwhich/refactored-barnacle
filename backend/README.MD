@@ -1,17 +1,23 @@
-# deBlog API
+## sad life
 
-## api url
-- url
+### user routes
+defaultEndpoint: /api/users
 
-### Access Points
-- /api/users
-- /api/blogs
+USER endpoints
+/api/users/auth - POST - login user
+/api/users - POST - registers user
+/api/users/logout - POST - logouts user
+USER protected endpoints
+/api/users/profile - GET - gets USER profile 
+/api/users/profile - PUT - updates USER profile
 
-#### /api/users
-- /api/users
-register endpoint
-This takes in {name, password, email}
-
-- /api/users/auth
-Login endpoint
-this takes in {name, password}
+BLOG endpoints
+/api/blogs - GET - Gets all blogs
+/api/blogs/:id - GET -  Gets single Blog
+BLOG protected endpoints
+/api/blogs/create - POST - Create a new Blog
+/api/blogs/update/:id - PUT - Updates current blog
+/api/blogs/delete/:id - DELETE - Deletes current blog
+/api/blogs/likeBlog/:id - PUT - allows user to like blog
+/api/blogs/comment/:id - PUT - allows user to comment under blog
+/api/blogs/feature/:id - PUT - Sets Blog to featured
