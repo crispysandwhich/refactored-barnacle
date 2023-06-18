@@ -6,21 +6,24 @@ import { Provider } from 'react-redux'
 import store from './redux/store.js'
 
 import App from './App'
+
 import Login from './pages/loginpage/LoginPage.jsx'
 import Register from './pages/registerpage/RegisterPage.jsx'
 import HomePage from './pages/homepage/HomePage.jsx'
-import CreatePage from './pages/createpage/CreatePage.jsx'
 import ErrorPage from './pages/errorpage/error-page.jsx'
-import Profile from './pages/profilepage/ProfilePage.jsx'
+
+import Layout from './screens/Layout.jsx'
 
 // PrivateRoute
 import PrivateRoute from './components/PrivateRoute.jsx'
+import CreatePage from './pages/createpage/CreatePage.jsx'
 import BlogPage from './pages/blogpage/BlogPage.jsx'
+import Profile from './pages/profilepage/ProfilePage.jsx'
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
       {index: true, element: <HomePage />},
@@ -46,6 +49,10 @@ const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path: "/deApp",
+    element: <App />
+  }
   
 ])
 
