@@ -7,3 +7,5 @@ Therre is a front end that will be able to communicate with user and display fro
 Still contemplating if I should implement web3 into this or leave it for my next site. But stay tuned.
 
 Feel like this is going to be different then what I wanted. Going to try and set this style up and maybe take a pause.
+
+to be honest.... i feel very sad just hope nothing bad will happen most of the time i just dont feel alone

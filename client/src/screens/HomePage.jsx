@@ -1,7 +1,7 @@
 import FeaturedBlog from "../components/FeaturedBlogs";
 import Hero from "../components/Hero";
-import Subsribtion from "../components/Subscription";
-import Dashboard from "../components/DashBoard"
+// import Subsribtion from "../components/Subscription";
+// import Dashboard from "../components/DashBoard"
 
 export default function HomePage() {
   return (
@@ -13,7 +13,7 @@ export default function HomePage() {
       <FeaturedBlog />
       }
       {/* Subsribtion */}
-      <Subsribtion />
+      {/* <Subsribtion /> */}
         
       {/* interesting */}
       {/* <Dashboard /> */}
