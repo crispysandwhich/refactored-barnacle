@@ -11,7 +11,7 @@ export default function HomePage() {
   return (
     <div className={classes.container}>
       <Hero />
-      <FeaturedBlogs />
+      {/* <FeaturedBlogs /> */}
       <Categories />
       <Newsletter />
     </div>
