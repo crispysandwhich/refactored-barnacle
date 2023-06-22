@@ -4,6 +4,7 @@ import { removeCredentials } from '../../redux/authSlice.js'
 import { useLogoutMutation } from '../../redux/userApiSlice.js'
 import classes from './header.module.css'
 import { Link, useNavigate } from 'react-router-dom'
+import { AiOutlineArrowDown } from 'react-icons/ai'
 
 export default function Navbar() {
 
@@ -35,23 +36,23 @@ export default function Navbar() {
     <div className={classes.container}>
 
       <div className={classes.wrapper}>
-        
-        <Link to='/' className={classes.logo}>deBlog</Link>
 
-        <ul className={classes.navList}>
-          <li className={classes.navListItem}>
-            <Link to="/">Home</Link>
-          </li>
-          <li className={classes.navListItem}>
-            <Link to="/about">About</Link>
-          </li>
-          <li className={classes.navListItem}>
-            <Link to="/contacts">contacts</Link>
-          </li>
-          <li className={classes.navListItem}>
-            <Link to="/categories">catergories</Link>
-          </li>
-        </ul>
+        <div className={classes.left}>
+          <Link to='/' className={classes.logo}>deBlog</Link>
+
+          <ul className={classes.navList}>
+            <li className={classes.navListItem}>
+              <Link to="/about">About</Link>
+            </li>
+            <li className={classes.navListItem}>
+              <Link to="/blogs">blogs</Link>
+            </li>
+            <li className={classes.navListItem}>
+              <Link to="/categories">catergories</Link>
+            </li>
+          </ul>
+        </div>
+        
 
         {
           !userInfo ? (
@@ -60,9 +61,10 @@ export default function Navbar() {
               <Link to="/register">register</Link>
             </div>
           ) : (
-            <div className={classes.profile_tab} >
+            <div className={classes.profile_tab} onClick={() => setShowModal(!showModal)} >
               <span>{userInfo.username}</span>
-              <img onClick={() => setShowModal(!showModal)} src={userInfo.profileImg} alt="user profile" />
+              <img src="https://placehold.co/20" alt="user profile" />
+              <AiOutlineArrowDown />
               {
                 showModal && (
                   <div className={classes.modal}>
