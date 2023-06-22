@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { removeCredentials } from '../../redux/authSlice.js'
 import { useLogoutMutation } from '../../redux/userApiSlice.js'
-import classes from './navbar.module.css'
+import classes from './header.module.css'
 import { Link, useNavigate } from 'react-router-dom'
 
 export default function Navbar() {

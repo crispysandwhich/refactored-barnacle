@@ -1,5 +1,5 @@
 // Create API requests for Express Router
-import asyncHandler from 'express-async-handler'
+import asyncHandler from 'express-async-handler' 
 import Blog from '../model/blogModel.js'
 
 // GET /api/blogs PUBLIC

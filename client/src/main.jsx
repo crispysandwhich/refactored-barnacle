@@ -19,6 +19,7 @@ import PrivateRoute from './components/PrivateRoute.jsx'
 import CreatePage from './pages/createpage/CreatePage.jsx'
 import BlogPage from './pages/blogpage/BlogPage.jsx'
 import Profile from './pages/profilepage/ProfilePage.jsx'
+import AppScreen from './screens/AppScreen.jsx'
 
 const router = createBrowserRouter([
   {
@@ -51,7 +52,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/deApp",
-    element: <App />
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+      {index: true, element: <AppScreen />},
+      // {
+      //   path: '/contacts',
+      //   element: <Contacts />
+      // }
+    ]
   }
   
 ])

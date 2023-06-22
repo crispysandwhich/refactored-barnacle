@@ -1,0 +1,17 @@
+.AppScreen {
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+}
+
+
+.appScreenContainer {
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+}
+
+.AppScreen img {
+  width: 100%;
+  height: 100%;
+}
