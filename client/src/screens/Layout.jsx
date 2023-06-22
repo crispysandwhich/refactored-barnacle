@@ -9,7 +9,9 @@ export default function Layout () {
     return (
         <div className={classes.layoutContainer}>
             <Header />
-            <Outlet/>
+            <div className={classes.outlet}>
+                <Outlet/>
+            </div>
             <Footer />
         </div>
     )

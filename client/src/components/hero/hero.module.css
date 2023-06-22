@@ -1,38 +1,60 @@
 .wrapper {
-  /* position: absolute;
-  left: 0px;
-  top: 0px;
-  z-index: -1;
-  width: 100%;
-  height: 100%; */
   padding: 10px;
   width: 100%;
   height: 720px;
-
-  /* background: no-repeat center center  url(../../assets/blur.jpg); */
   color: aliceblue;
-  /* background-color: rgba(17, 15, 15, 0.6); */
-  background-size: cover;
-  background-blend-mode: darken;
-  /* backdrop-filter: invert(80%);; */
-  /* -webkit-filter: blur(8px); */
-
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: black;
 }
 
 .content{
   color: white;
   font-weight: bold;
   border: 3px solid #f1f1f1;
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2222; */
   width: 20%;
   padding: 20px;
+}
+
+
+.right{
+  background-color: rgb(36, 35, 35);
+  text-align: center;
+  margin-left: 10px;
+  width: 300px;
+  color: white;
+  border: 3px solid #555;
+}
+
+.trending{
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.trending h2 {
+  flex: 1;
+  font-size: 2rem;
+}
+
+.trendCoin {
+  width: 100%;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.trendCoin img {
+  width: 30px;
+  height: 100%;
 }
 
 .logo {
