@@ -1,0 +1,43 @@
+:root{
+  --background-color: #26413C;
+  --light-primary: #8AB0Ab;
+  --light-secoundary: #3E505B;
+  --dark-primary: #1A1D1A;
+  --dark-secoundary: #03120E;
+
+  --main-font: 'Outfit', sans-serif;
+  --secoundary-font: 'Oxygen', sans-serif;
+  --text-font: 'Indie Flower', cursive;
+}
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  width: 100%;
+  height: 100%;
+  background-color: var(--background-color);
+  color: var(--dark-secoundary);
+  font-family: var(--main-font);
+}
+
+a {
+  text-decoration: none;
+  font-family: var(--secoundary-font);
+}
+
+p {
+  font-family: var(--text-font);
+}
+
+#layout{
+  max-width: 1800px;
+  height: 100%;
+  border: 2px solid var(--light-secoundary);
+  margin: 20px auto;
+  /* padding: 10px; */
+}

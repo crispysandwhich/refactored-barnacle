@@ -1,0 +1,29 @@
+#MainFooter {
+  
+  background-color: var(--light-secoundary);
+  padding: 10px;
+  text-align: center;
+  color: var(--dark-secoundary);
+}
+
+#MainFooter h6{
+  margin-bottom: 5px;
+  text-transform: capitalize;
+}
+
+#MainFooter ul {
+  width: 100px;
+  margin: 0 auto;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#MainFooter li a svg{
+  color: var(--dark-secoundary);
+}
+
+#MainFooter li a svg:hover{
+  color: var(--light-primary);
+}

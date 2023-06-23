@@ -1,0 +1,6 @@
+#HomePage {
+  background-color: var(--dark-secoundary);
+  color: var(--light-secoundary);
+  /* background-color: firebrick; */
+  /* padding: 10px; */
+}
