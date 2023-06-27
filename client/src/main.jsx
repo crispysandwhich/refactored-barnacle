@@ -17,6 +17,9 @@ import CreatePage from './pages/CreatePage.jsx'
 import BlogDetailsPage from './pages/BlogDetailsPage.jsx'
 
 
+// deApp
+import App from './App.jsx'
+
 const router = createBrowserRouter([
   { 
     path: '/',
@@ -56,7 +59,7 @@ const router = createBrowserRouter([
   },
   { 
     path: '/deApp',
-    element: <div>Small app</div>,
+    element: <App />,
     errorElement: <ErrorPage />
   }
 ])
