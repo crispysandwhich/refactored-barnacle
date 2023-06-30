@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
+const { Schema } = mongoose;
 
-const blogSchema = new mongoose.Schema({
+
+const blogSchema = new Schema({
 
   userId: {
     type: mongoose.Types.ObjectId,
@@ -9,15 +11,18 @@ const blogSchema = new mongoose.Schema({
   },
   title: {
     type: String,
-    required: true,
+    rqeuired: true,
+    min: 4
   },
   summary: {
     type: String,
     required: true,
+    min: 12,
   },
   content: {
     type: String,
     required: true,
+    min: 12,
   },
   photo: {
     type: String,
@@ -25,11 +30,11 @@ const blogSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    required: true,
+    requried: true,
   },
   featured: {
     type: Boolean,
-    default: false
+    default: false,
   },
   views: {
     type: Number,
@@ -38,16 +43,11 @@ const blogSchema = new mongoose.Schema({
   likes: {
     type: [String],
     default: []
-  },
-  comments: [
-    {
-      comment: String,
-      created: { type: Date, default: Date.now},
-      postedBy: { type: mongoose.Types.ObjectId, ref: "User" }
-    }
-  ],
+  }
 
 }, {timestamps: true})
+
+
 
 
 const Blog = mongoose.model('Blog', blogSchema)

@@ -1,4 +1,7 @@
-import React,{ useState } from 'react'
+// Web3 Type Shit soon
+
+
+import{ useState } from 'react'
 
 export default function App() {
   const [countDown, setCountDown] = useState('')
@@ -11,8 +14,6 @@ export default function App() {
   const day = currentDate.getDate(); // Day of the month
   const hours = currentDate.getHours(); // Hour (0-23)
   const minutes = currentDate.getMinutes(); // Minutes (0-59)
-
-
 
   // Set the countdown date
   const countdownDate = new Date('2023-12-31 23:59:59').getTime();

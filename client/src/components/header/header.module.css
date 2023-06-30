@@ -87,7 +87,6 @@
 
 .modal {
   position: absolute;
-  height: 150px;
   width: 150px;
   background-color:rgba(10, 57, 57, 0.489);
   top: 3rem;
@@ -96,8 +95,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  /* padding: 5px; */
 } 
 
 .modal::after{
@@ -121,6 +118,5 @@
 
 .modal a:hover{
   background-color: black;
-
 }
 

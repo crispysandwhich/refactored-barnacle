@@ -1,23 +1,17 @@
-## sad life
 
-### user routes
-defaultEndpoint: /api/users
+## Endpoints
+### auth endpoints
+POST /auth/register - register User
+POST /auth/login - login User
+### user enpoints
+POST /api/user/logout - logout User
+GET /api/user/:id - Get single user
+### blog endpoints
+GET /api/blog - Get all blogs
+GET /api/blog/:id - Get Single Blog
+GET /api/blog/featured - Get Featured Blog
+PUT /api/blog/:id/like - Like the current blog
+POST /blog/create - Create a new blog
+PUT /blog/update/:id - Update current Blog
+DELETE /api/blog/delete/:id - Delete the current blog
 
-USER endpoints
-/api/users/auth - POST - login user
-/api/users - POST - registers user
-/api/users/logout - POST - logouts user
-USER protected endpoints
-/api/users/profile - GET - gets USER profile 
-/api/users/profile - PUT - updates USER profile
-
-BLOG endpoints
-/api/blogs - GET - Gets all blogs
-/api/blogs/:id - GET -  Gets single Blog
-BLOG protected endpoints
-/api/blogs/create - POST - Create a new Blog
-/api/blogs/update/:id - PUT - Updates current blog
-/api/blogs/delete/:id - DELETE - Deletes current blog
-/api/blogs/likeBlog/:id - PUT - allows user to like blog
-/api/blogs/comment/:id - PUT - allows user to comment under blog
-/api/blogs/feature/:id - PUT - Sets Blog to featured

@@ -12,6 +12,7 @@ export default function RegisterPage() {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [picture, setPicture] = useState('')
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -32,7 +33,7 @@ export default function RegisterPage() {
     if(username === "" || email === "" || password === "") return
 
     try {
-      const res = await register({username, email, password}).unwrap()
+      const res = await register({username, email, password, picture: picture[0]}).unwrap()
       dispatch(setCredentials({...res}))
       navigate('/')
     } catch (error) {
@@ -73,6 +74,9 @@ export default function RegisterPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               />
+          </label>
+          <label htmlFor="picture">
+            <input type="file" name="picture" onChange={(e) => setPicture(e.target.value)}/>
           </label>
           <button type="submit">submit</button>
           <p>Already have an account, <Link to="/login">Login</Link> instead</p>

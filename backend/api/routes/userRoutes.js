@@ -1,7 +1,6 @@
 import express from 'express';
 import { 
   authUser,
-  registerUser,
   logoutUser,
   getUserProfile,
   updateUserProfile
@@ -9,14 +8,11 @@ import {
 import { protect } from '../middleware/authMiddleware.js'
 const router = express.Router()
 
-// login user
+// POST /api/users/auth - Login User
 router.post('/auth', authUser)
-// register user
-router.post('/', registerUser)
-// logout 
+// POST /api/users/logout - Logout User 
 router.post('/logout', logoutUser)
-
-// user profile
+// GET | PUT /api/users/profile - Get user Profile and update user profile
 router.route('/profile').get(protect, getUserProfile).put(protect, updateUserProfile)
 
 

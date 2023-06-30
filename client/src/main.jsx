@@ -6,10 +6,10 @@ import { Provider } from 'react-redux'
 import store from './redux/store.js'
 
 
+import Layout from './screens/Layout'
 import ErrorPage from './pages/error-page'
 import BlogPage from './pages/BlogPage'
 import ProfilePage from './pages/ProfilePage'
-import Layout from './screens/Layout'
 import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
@@ -18,7 +18,7 @@ import BlogDetailsPage from './pages/BlogDetailsPage.jsx'
 
 
 // deApp
-import App from './App.jsx'
+import App from './App.jsx' 
 
 const router = createBrowserRouter([
   { 

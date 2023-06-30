@@ -1,34 +1,34 @@
-import mongoose from 'mongoose';
-import bcrypt from 'bcryptjs';
+import mongoose from "mongoose";
+const { Schema } = mongoose;
+import bcrypt from 'bcrypt'
 
-const userSchema = new mongoose.Schema({
+
+const userSchema = new Schema({
 
   username: {
     type: String,
     required: true,
     unique: true
   },
-  email: { 
-    type: String, 
+  email: {
+    type: String,
     required: true,
     unique: true
   },
   password: {
     type: String,
-    required: true,
-    min: 6
+    required: true
   },
-  profileImg: {
+  profileImage: {
     type: String,
+    default: ""
   },
   profileDescription: {
     type: String,
+    default: "I am new here and still havent set much up, be my friend"
   },
-  web3Address: {
-    type: String
-  }
 
-}, { timeStamps: true })
+}, {timeStamps: true})
 
 userSchema.pre('save', async function(next){
   if(!this.isModified('password')){
@@ -44,6 +44,6 @@ userSchema.methods.matchPassword = async function(pass) {
   return await bcrypt.compare(pass, this.password)
 }
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema)
 
-export default User;
+export default User

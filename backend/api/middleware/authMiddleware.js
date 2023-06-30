@@ -1,7 +1,5 @@
-import jwt from 'jsonwebtoken'
+import jwt from "jsonwebtoken"
 import User from '../model/userModel.js'
-
-// checks cookie
 
 const protect = async (req, res, next) => {
   let token;
@@ -15,10 +13,10 @@ const protect = async (req, res, next) => {
       req.user = await User.findById(decoded.userId).select('-password')
       next()
     } catch (error) {
-      res.status(401).json({msg: 'not authroized'})
+      res.status(401).json({message: 'not authroized'})
     }
   } else {
-    res.status(401).json({msg: 'not authroized, no token'})
+    res.status(401).json({message: "not authroized, no token" })
   }
 
 
