@@ -4,7 +4,7 @@ import generateToken from "../utils/generateToken.js"
 // POST - /auth/register
 const userRegister = async (req, res) => {
 
-  const { username, email, password, profileImage  } = req.body
+  const { username, email, password } = req.body
 
   try {
     // Cheacking to see if user submitted profile image
