@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import '../styles/Hero.css'
 
+import '../styles/Hero.css'
 
 export default function Hero() {
   return (

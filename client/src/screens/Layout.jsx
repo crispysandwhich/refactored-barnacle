@@ -5,7 +5,7 @@ import MainFooter from '../components/MainFooter'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-import '../styles/layout.css'
+import '../styles/layout.css' 
 
 export default function Layout() {
   return (

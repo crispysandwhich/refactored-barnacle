@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { removeCredentials } from '../redux/slices/authSlice.js'
 import { useLogoutMutation } from '../redux/slices/userApiSlice.js'
 import { Link, useNavigate } from 'react-router-dom'
+
 import '../styles/MainHeader.css'
 
 export default function MainHeader() {

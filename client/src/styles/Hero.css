@@ -28,13 +28,13 @@
 }
 
 .heroWrapper h2 {
-  font-size: 2rem;
+  font-size: 2.6rem;
   text-transform: capitalize;
   margin-bottom: 10px;
 }
 
 .heroWrapper p {
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 20px;
 }
 
@@ -42,7 +42,7 @@
   padding: 12px 10px;
   background-color: var(--dark-primary);
   color: var(--light-primary);
-  font-size: 20px;
+  font-size: 18px;
   text-transform: uppercase;
   border-radius: 10px;
 }

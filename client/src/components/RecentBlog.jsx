@@ -1,7 +1,7 @@
+import {AiFillLike} from 'react-icons/ai'
+import {MdOutlinePreview} from 'react-icons/md'
 
 import '../styles/RecentBlog.css'
-import {MdOutlinePreview} from 'react-icons/md'
-import {AiFillLike} from 'react-icons/ai'
 
 export default function RecentBlog() {
   return (
