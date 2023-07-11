@@ -20,9 +20,13 @@ const getUserAccount = async (req,res) =>  {
   }
 }
 
+<<<<<<< HEAD
 // [POST] /api/user/register 
 const registerUserAccount = async (req,res) => {
   // console.log(req.file)
+=======
+  const { username, email, password } = req.body
+>>>>>>> 7b639cd76a926cd9a31288316aa5921c155a70bd
 
   try {
     // Checks to see if email exist

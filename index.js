@@ -1,3 +1,4 @@
+// index
 import dotenv from 'dotenv'
 import server from './backend/server.js';
 import connectDB from "./backend/api/config/db.js"
