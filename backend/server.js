@@ -4,7 +4,7 @@ import cookieParser from 'cookie-parser'
 import helmet from 'helmet'
 import morgan from 'morgan'
 
-import authRoute from './api/routes/authRoute.js'
+// Routes
 import userRoute from './api/routes/userRoute.js'
 import blogRoute from './api/routes/blogRoute.js'
 
@@ -24,7 +24,6 @@ server.use('/images', express.static('./public/images'))
 
 
 // Routes
-server.use("/auth", authRoute)
 server.use('/api/user', userRoute)
 server.use('/api/blog', blogRoute)
 // Dont forget to add posts

@@ -1,72 +1,126 @@
 import User from '../model/userModel.js'
 import generateToken from "../utils/generateToken.js"
 
-// POST - /auth/register
-const userRegister = async (req, res) => {
+// [GET] /api/user auth 
+const getUserAccount = async (req,res) =>  {
+  try {
+    const user = await User.findOne({email: req.user.email})
+    if(user){
+      res.status(200).json({
+        username: user.username,
+        email: user.email,
+        profileImage: user.profileImage,
+        description: user.profileDescription
+      })
+    }else {
+      res.status(404).json({message: 'User not found'})
+    }
+  } catch (error) {
+    res.status(404).json({message: error.message})
+  }
+}
 
-  const { username, email, password, profileImage  } = req.body
+// [POST] /api/user/register 
+const registerUserAccount = async (req,res) => {
+  // console.log(req.file)
 
   try {
-    // Cheacking to see if user submitted profile image
-    if(!req.file) {
-      // Mint a profile image
-      const defaultImage = '../../public/defaultImg/profile-1.png'
-      req.file = { filename: 'profile-1.png', path: defaultImage}
+    // Checks to see if email exist
+    const userExist = await User.findOne({email: req.body.email})
+    if(userExist) {
+      res.status(400).json({msg: 'User exists buddy, hope you find something better'})
     }
-    // Check to see if user exist
-    const userExist = await User.findOne({email})
-    if(userExist){
-      res.status(400).json({message: 'User already exists'})
+
+    // If no image than we create an image
+    if(!req.file){
+      req.file = {filename: "ghostt.jpg"}
     }
-    // Create New User
+
+    // Setup and create user
     const newUser = await User.create({
-      username,
-      email,
-      password,
-      profileImage: req.file.path,
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password,
+      profileImage: `http://localhost:5001/api/images/${req.file.filename}`
     })
-    // Serve the frontend user data
-    if(newUser){
+
+    // If success then we respond to client with the following data
+    if(newUser) {
       generateToken(res, newUser._id)
-      res.status(201).json({
+      res.status(200).json({
         _id: newUser._id,
         username: newUser.username,
         email: newUser.email,
-        profileImage: newUser.profileImage,
+        profileImg_url: newUser.profileImage
       })
-    } else{
-      res.status(400).json("couldnt create token")
+    } else {
+      res.status(400).json({msg: 'Failed to create an account'})
     }
 
-  } catch (error) {
-    res.status(400).json(error)
-  }
 
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({message: error.message})
+  }
 }
 
-// POST - /auth/user/login
-const userLogin = async (req, res) => {
-  
-  const { email, password } = req.body
+// [POST] /api/user/login
+const logUserIn = async (req, res) => {
+  // console.log(req.body)
+  try {    
+    const user = await User.findOne({email: req.body.email})
 
-  try{
-    const user = await User.findOne({ email })
-
-    if(user && (await user.matchPassword(password))) {
+    if(user && (await user.matchPassword(req.body.password))) {
       generateToken(res, user._id)
-
       res.status(201).json({
         _id: user._id,
         username: user.username,
         email: user.email,
-        profileImg: user.profileImage,
+        profileImg_url: user.profileImage
       })
-    } 
+    } else {
+      res.status(404).json({message: "sorry user account and password not working well"})
+    }
 
-  } catch(error){
-    res.status(400).json({mes: error})
+  } catch (error) {
+    res.status(500).json({msg: error.message})
   }
+}
 
+// [PUT] /api/user/update auth
+const updateUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+  
+    if (user) {
+      user.username = req.body.username || user.username;
+      user.email = req.body.email || user.email;
+      user.profileDescription = req.body.profileDescription || user.profileDescription
+      
+      if (req.body.password) {
+        user.password = req.body.password;
+      }
+      
+      if(req.file){
+        user.profileImage = `http://localhost:5001/api/images/${req.file.filename}`
+      }
+
+      const updatedUser = await user.save();
+      
+      res.status(200).json({
+        _id: updatedUser._id,
+        username: updatedUser.username,
+        email: updatedUser.email,
+        profileImg: updatedUser.profileImage,
+        profileDescription: updatedUser.profileDescription
+      });
+    } else {
+      res.status(404).json({message: 'User not found'})
+    }
+    
+  } catch (error) {
+    res.status(400).json({message: error.message})
+  }
 }
 
 // POST - /api/user/logout
@@ -88,7 +142,7 @@ const getSingleUser = async (req, res) => {
         _id: user._id,
         username: user.username,
         email: user.email,
-        profileImg: user.profileImage
+        profileImage_url: user.profileImage
       });
     } else {
       res.status(404);
@@ -100,9 +154,11 @@ const getSingleUser = async (req, res) => {
   }
 }
 
-export { 
-  userLogin,
-  userRegister,
+export {
+  getUserAccount,
+  registerUserAccount,
+  logUserIn,
+  updateUser,
   userLogout,
   getSingleUser
 }
